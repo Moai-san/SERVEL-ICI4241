@@ -1,19 +1,18 @@
-<form (ngSubmit)="loginOnSubmit()" #loginForm="ngForm" class="formulario" name="login" autocomplete="off">
+<form (ngSubmit)="loginOnSubmit()" [formGroup]="formularioLogIn" class="formulario" name="login" autocomplete="off" novalidate>
   <h4 style="text-align: center;">Iniciar sesión</h4>
 
   <label for="rut">RUT SIN PUNTOS NI GUION</label>
-  <input type="text" name="correo" id="rut" class="sesion" placeholder="EJEMPLO: 12.345.678-9 SERÍA 123456789" minlength="8" required [(ngModel)]="loginModel.l_rut" #l_rut="ngModel">
-
+  <input type="text" formControlName="rut" id="rut" class="sesion" placeholder="EJEMPLO: 12.345.678-9 SERÍA 123456789" minlength="8" required ><!--[(ngModel)]="loginModel.l_rut" #l_rut="ngModel">-->
   <label for="contraseña">CONTRASEÑA</label>
-  <input type="password" name="contrasena" id="contraseña" class="sesion" placeholder="Contraseña" minlength="8" required [(ngModel)]="loginModel.l_contrasena" #l_contrasena="ngModel">
+  <input type="password" formControlName="clave" id="contraseña" class="sesion" placeholder="Contraseña" minlength="8" required ><!--[(ngModel)]="loginModel.l_contrasena" #l_contrasena="ngModel">-->
 
   <button type="submit" name="inicio_sesion" class="button">Iniciar sesión</button>
-  <div *ngIf="loginsubmitted">
+  <!--<div *ngIf="loginsubmitted">
       <div *ngFor="let user of users">
           <div *ngIf="user.rut==l_rut.value">
               <p *ngIf="user.password==l_contrasena.value;else wPassword">Inicio de sesion exitoso</p>
               <ng-template #wPassword> Contraseña invalida</ng-template>
           </div>
       </div>
-  </div>
+  </div>-->
 </form>

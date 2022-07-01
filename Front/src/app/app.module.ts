@@ -7,18 +7,22 @@ import { AppComponent } from './app.component';
 import { navBar } from './navBar';
 import { login } from './login';
 import { menu } from './Menu/menu';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   declarations: [
     AppComponent,
     navBar,
     menu,
-    login
+    login,
   ],
   providers: [],
   bootstrap: [AppComponent]
