@@ -1,0 +1,12 @@
+*
+{
+    @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
+    font-family: 'Roboto Condensed', sans-serif;
+}
+body {
+    background-repeat: repeat;
+    background-image: url("./assets/Images/votaciones.png"); 
+    background-size: 40%;
+  }  
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
