@@ -9,6 +9,7 @@ import { login } from './login';
 import { menu } from './Menu/menu';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { vote } from './vote/vote';
 
 @NgModule({
   imports: [
@@ -23,6 +24,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     navBar,
     menu,
     login,
+    vote
   ],
   providers: [],
   bootstrap: [AppComponent]

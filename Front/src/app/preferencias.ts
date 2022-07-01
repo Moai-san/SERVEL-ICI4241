@@ -1,5 +1,5 @@
 export interface preferencias{
     id: number;
-    nombre: String;
+    nombreP: String;
     conteo: number;
 }

@@ -16,9 +16,10 @@ export class ConexionBackEndService {
   getUsuarios():Observable<any>{
     return this.http.get(`${this.servidor}/getUsuarios`);
   }
-  getFormularios():Observable<any>{
-    return this.http.get(`${this.servidor}/getFormularios`);
+  getPreferencias():Observable<any>{
+    return this.http.get(`${this.servidor}/getPreferencias`);
   }
+
   postUsuarios(datos:votantes):Observable<any>{
     console.log(datos);
     return this.http.post(`${this.servidor}/crearUsuarios`,JSON.stringify(datos),httpOptions);

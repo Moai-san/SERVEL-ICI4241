@@ -47,9 +47,8 @@ app.get('/getUsuarios',bodyParser.json(), (request:any, response:any) => {
     response.send(results);
   })
 })
-app.get('/getFormularios',bodyParser.json(), (request:any, response:any) => {
-  console.log("xdd");
-  connection.query("SELECT * from contacto", function(error:any, results:any, fields:any){
+app.get('/getPreferencias',bodyParser.json(), (request:any, response:any) => {
+  connection.query("SELECT * from preferencias", function(error:any, results:any, fields:any){
     response.send(results);
   })
 })
