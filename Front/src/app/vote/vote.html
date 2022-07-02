@@ -1,7 +1,7 @@
 
-<div id="tabla" class="fluid-container">
+<div id="tabla" class="fluid-container" (ngSubmit) = "guardarSeleccion()">
 
-    <table class="table table-primary">
+    <table class="table table-primary" >
 
         <thead>
             <tr>
@@ -11,12 +11,16 @@
             </tr>                      
         </thead>
 
-        <tbody>
+        <tbody  >
             <tr *ngFor="let item of datos">
-                <td scope="row">{{item.id}}</td>
-                <td scope="row">{{item.nombreP}}</td>
-                <td scope="row">{{<input type="radio" id="check" name="selection">}}</td>
+                <td scope="row"  >{{item.id}}</td>
+                <td scope="row" id="preferencia">{{item.nombreP}}</td>
+                <td scope="row" id="preferencia">{{<input type="radio" id="check" value={{item.id}} (change)="setPreferenciaActual($event)" name="selection">}}</td>    
             </tr>
+            
         </tbody>
+        
     </table>
+    <button type="submit" id="boton" > seleccionar preferencia </button>
+    
 </div>

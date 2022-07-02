@@ -91,6 +91,18 @@ app.post('/crearFormulario',bodyParser.json(),(request:any,response:any)=>{
     response.send(JSON.stringify(`formulario creado ${result.insertId}`));
   })
 });
+app.post('/votar',bodyParser.json(),(request:any,response:any)=>{
+  console.log("xddddd");
+  
+  /*let correo=request.body.correo;
+  let asunto=request.body.asunto;
+  let mensaje=request.body.mensaje;
+  console.log(nombre,correo,asunto,mensaje);
+
+  connection.query("insert into contacto (nombre,correo,asunto,mensaje) values(?,?,?,?)", [nombre,correo,asunto,mensaje], function(error:any, result:any, fields:any){
+    response.send(JSON.stringify(`formulario creado ${result.insertId}`));
+  })*/
+});
 //Actualizar una fila
 /*app.put('/cambiarClave',bodyParser.json(),async (request:any, response:any) => {
 
@@ -141,18 +153,18 @@ app.delete('/borrarUsuario/:correo',bodyParser.json() ,(request:any,response:any
 app.post('/LoginU', bodyParser.json(), function(request:any, response:any) {
 	let rut = request.body.rut;
 	let clave = request.body.clave;
-    console.log(rut + clave);
 	if (rut && clave) {
 		connection.query('SELECT * FROM votantes WHERE rut = ?', rut, async function(error:any, results:any, fields:any) {
       if(results[0] != undefined){
-        console.log(results[0])
-        console.log(clave);
-        if(clave == results[0].password){
+        if(clave == results[0].password && true == results[0].enabled){
             if (results.length > 0) {
-                console.log("xddd");
                 response.send(JSON.stringify(results));
             } 
+        }else{
+          response.send(JSON.stringify(`F`));
+          response.end()
         }
+
       }
       else{
         response.send(JSON.stringify(`F`));

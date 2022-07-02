@@ -10,6 +10,7 @@ const httpOptions  ={
   providedIn: 'root'
 })
 export class ConexionBackEndService {
+ 
 
   constructor(private http:HttpClient) { }
   servidor="http://127.0.0.1:3000";
@@ -35,7 +36,7 @@ export class ConexionBackEndService {
     console.log(correo);
     return this.http.delete( `${this.servidor}/borrarUsuario/${correo}`, httpOptions );
   }
-  postInicioS(datos:VotanteLogIn):Observable<any>{
+  postInicioS(datos:any):Observable<any>{
     console.log(datos);
     return this.http.post(`${this.servidor}/LoginU`,JSON.stringify(datos),httpOptions);
   }
@@ -47,5 +48,9 @@ export class ConexionBackEndService {
   putContraseña(datos:VotanteLogIn):Observable<any> {
     console.log(datos);
     return this.http.put(`${this.servidor}/cambiarClave`,JSON.stringify(datos),httpOptions);
+  }
+  postPreferencia(datos:String):Observable<any> {
+    console.log(datos);
+    return this.http.post(`${this.servidor}/votar`,JSON.stringify(datos),httpOptions);
   }
 }

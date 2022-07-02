@@ -5,7 +5,6 @@ import { Validators } from '@angular/forms';
 import { Input } from '@angular/core';
 import { ConexionBackEndService } from '../conexion-back-end.service';
 import { preferencias } from '../preferencias';
-
 @Component({
   selector: 'vote',
   templateUrl: './vote.html',
@@ -15,7 +14,8 @@ import { preferencias } from '../preferencias';
 export class vote implements OnInit {
   datos:Array<preferencias>=[];
   tablaPref:FormGroup;
-  constructor(private servicio:ConexionBackEndService, public formC:FormBuilder) {
+  preferenciaActual:String = "Apruebo";
+  constructor(public BackEnd:ConexionBackEndService, public formC:FormBuilder) {
     
     this.tablaPref=this.formC.group({
       
@@ -28,11 +28,28 @@ export class vote implements OnInit {
 
   ngOnInit(): void {
     
-    this.servicio.getPreferencias().subscribe(datosBackEnd=>{
+    this.BackEnd.getPreferencias().subscribe(datosBackEnd=>{
       for(let i=0; i<datosBackEnd.length ;i++)
       {
         this.datos.push(datosBackEnd[i]);
       }
-  });
+    });
+    
+     document.getElementById("boton")?.addEventListener("click",this.guardarSeleccion.bind(this))
+  }
+  public setPreferenciaActual(event:any){
+    console.log(event.target.value)
+    this.preferenciaActual = event.target.value;
+    console.log(this.preferenciaActual)
+    this.preferenciaActual.toString();
+    console.log(this.preferenciaActual)
+  }
+  public guardarSeleccion(){
+
+    this.BackEnd.postPreferencia(this.preferenciaActual).subscribe(respuesta=>{
+    
+    })
+  
+  
   }
 }

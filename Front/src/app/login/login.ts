@@ -22,7 +22,7 @@ export class login
 {
     formularioLogIn:FormGroup;
     loginModel = new UserLogin('', '');
-    
+    usuarioIngresado:boolean = false;    
     constructor(public formL:FormBuilder, public backEnd:ConexionBackEndService){
         this.formularioLogIn=this.formL.group({
             rut: "",
@@ -38,9 +38,19 @@ export class login
           "rut":this.formularioLogIn.get("rut")?.value,
           "clave":this.formularioLogIn.get("clave")?.value
         }).subscribe(respuesta=>{
-          console.log(respuesta[0].rut);
-          if(respuesta[0] == "F"){
+          //console.log(respuesta[0].rut);
+          if(respuesta[0] != "F"){
+           this.setSesionIniciada(true); 
+          }else{
+            window.alert("Verifique sus datos nuevamente o en su defecto verifique que usted pueda votar")
           }
         });
-      }
+    }
+    public setSesionIniciada(valor:boolean)
+    {
+      this.usuarioIngresado = valor;
+    }
+    public getSesionIniciada(){
+      return this.usuarioIngresado;
+    }
 }
